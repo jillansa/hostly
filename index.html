@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-g">
-    <title>Mi ERP Hotelero</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <nav>
-        <a href="/" data-navigo>Dashboard</a>
-        <a href="/pedidos" data-navigo>Pedidos</a>
-    </nav>
-
-    <main id="app"></main>
-
-    <script src="https://unpkg.com/navigo@8.11.1/lib/navigo.min.js"></script>
-    
-    <script type="module" src="/js/main.js"></script>
-</body>
+    <head>
+    <meta charset="UTF-8">
+    <title>App SPA con Navigo + Firebase</title>
+    </head>
+    <body x-data="{ user: null }">
+        <div id="app">Cargando...</div>
+        
+        <script type="module" src="/js/router.js"></script>
+        
+    </body>
 </html>

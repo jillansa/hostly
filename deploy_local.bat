@@ -1,0 +1,1 @@
+xcopy "C:\Users\jis08a\Desktop\Laboratorios\hostly\*" "C:\Users\jis08a\Desktop\nginx-1.28.0\html\" /E /H /Y /C
