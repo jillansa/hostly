@@ -1,0 +1,15 @@
+
+body { font-family: 'Inter', sans-serif; }
+#map { height: 400px; border-radius: 0.5rem; }
+.leaflet-container { background: #f9f9f9; }
+.leaflet-marker-icon {
+    text-align: center;
+    font-weight: bold;
+}
+.driver-marker .marker-label {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+}

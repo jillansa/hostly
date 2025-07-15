@@ -2,12 +2,18 @@
 <html lang="es">
     <head>
     <meta charset="UTF-8">
-    <title>App SPA con Navigo + Firebase</title>
+    <title>Hostly</title>
+    
+    <!-- Tailwind CSS para un diseño moderno y adaptable -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="/js/router.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+
     </head>
-    <body x-data="{ user: null }">
-        <div id="app">Cargando...</div>
-        
-        <script type="module" src="/js/router.js"></script>
+    <body class="bg-gray-100 text-gray-800" x-data="{ user: null }">
+        <div id="app-container" class="min-h-screen">
+            <div id="app">Cargando...</div>
+        </div>
         
     </body>
 </html>
