@@ -28,13 +28,13 @@ onAuthStateChanged(auth, async (user) => {
             // ejemplo de navegación según rol
             if (currentUserProfile.role === 'admin') {
                 router.navigate('/dashboardAdmin');
-                return;
+                
             } else if (currentUserProfile.role === 'empleado') {
                 router.navigate('/dashboardEmpleado');
-                return;
+                
             } else {
                 router.navigate('/dashboard');
-                return;
+                
             }
         });
     
@@ -52,7 +52,7 @@ onAuthStateChanged(auth, async (user) => {
         //Alpine.store('user', null);
 
         router.navigate('/login');
-        return;
+        
     }
 });
 
@@ -62,7 +62,7 @@ router.on({
 '/login': async () => {
     if (auth.currentUser) {
       router.navigate('/dashboard');
-      return;
+      
     }
 
     initCommon();
@@ -78,7 +78,7 @@ router.on({
 '/dashboard': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
-      return;
+      
     }
     
     initCommon();
@@ -86,10 +86,10 @@ router.on({
     // ejemplo de navegación según rol
     if (currentUserProfile.role === 'admin') {
         router.navigate('/dashboardAdmin');
-        return;
+        
     } else if (currentUserProfile.role === 'empleado') {
         router.navigate('/dashboardEmpleado');
-        return;
+        
     } else {
         
         const html = await fetch('/views/dashboard.html').then(r => r.text());
@@ -103,7 +103,7 @@ router.on({
 '/dashboardAdmin': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
-      return;
+      
     }
 
     initCommon();
@@ -111,7 +111,7 @@ router.on({
     // ejemplo de navegación según rol
     if (currentUserProfile.role !== 'admin') {
         router.navigate('/dashboard');
-        return;
+        
     } else {        
         const html = await fetch('/views/dashboardAdmin.html').then(r => r.text());
         document.getElementById('app').innerHTML = html;
@@ -124,7 +124,7 @@ router.on({
 '/dashboardEmpleado': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
-      return;
+      
     }
 
     initCommon();
@@ -132,7 +132,7 @@ router.on({
     // ejemplo de navegación según rol
     if (currentUserProfile.role !== 'empleado') {
         router.navigate('/dashboard');
-        return;
+        
     } else {
         
         const html = await fetch('/views/dashboardEmpleado.html').then(r => r.text());
@@ -145,6 +145,20 @@ router.on({
 
   '*': async () => {
     router.navigate('/dashboard');
-    return;
+    
   }
 }).resolve();
+
+// Cargar nav.html al iniciar
+async function loadNavbar() {
+  const res = await fetch('/nav.html');
+  const html = await res.text();
+  document.getElementById('navbar').innerHTML = html;
+  Alpine.initTree(document.getElementById('navbar')); // Reactivar Alpine si es necesario
+}
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadNavbar();
+  router.updatePageLinks();
+});
