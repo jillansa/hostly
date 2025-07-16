@@ -5,7 +5,7 @@ import { auth, signInWithEmailAndPassword } from '/js/firebase.js';
 
 export function init() {
     // Definimos una función global accesible desde Alpine
-    window.loginForm = () => ({
+    window.loginForm =  () => ({
         email: '',
         password: '',
         async login() {
@@ -18,6 +18,7 @@ export function init() {
     });
     
 }
+
 
 
 

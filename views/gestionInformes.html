@@ -1,0 +1,29 @@
+
+    <div class="container">
+        <h1>Generar Informe del Negocio</h1>
+        <form id="informeForm">
+            <label for="fecha">Fecha del Informe</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="tipo">Tipo de Informe</label>
+            <select id="tipo" name="tipo" required>
+                <option value="">Seleccione...</option>
+                <option value="ventas">Ventas</option>
+                <option value="inventario">Inventario</option>
+                <option value="finanzas">Finanzas</option>
+                <option value="clientes">Clientes</option>
+            </select>
+
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ingrese detalles del informe..." required></textarea>
+
+            <button type="submit">Generar Informe</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('informeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Informe generado correctamente.');
+            // Aquí puedes agregar la lógica para enviar el informe al servidor
+        });
+    </script>

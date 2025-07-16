@@ -1,25 +1,5 @@
-MENU
-<button @click="logout()">Salir</button>
-
-
-<section x-data="dashboardEmpleadoForm()" class="login">
-  <h2>Bienvenido (empleado), <span x-text="$store.user?.email"></span></h2>
-  
-</section>
-
-        <!-- VISTA PRINCIPAL (Después del login) -->
-        <div id="main-view" class="">
-            <header class="bg-gray-800 text-white shadow-lg">
-                <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-                    <h1 class="text-xl font-bold">Hostly Manager</h1>
-                    <div>
-                        <span id="user-email" class="mr-4 text-sm"></span>
-                        <button @click="logout()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md text-sm">Salir</button>
-                    </div>
-                </div>
-            </header>
+<section x-data="dashboardEmpleadoForm()" class="login">  
             
-            <main class="container mx-auto p-4 md:p-6">               
 
                 <!-- VISTA DE EMPLEADO -->
                 <div id="employee-view" class="hidden space-y-6">
@@ -41,5 +21,5 @@ MENU
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
+
+</section>

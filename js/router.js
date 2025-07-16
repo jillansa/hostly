@@ -28,13 +28,13 @@ onAuthStateChanged(auth, async (user) => {
             // ejemplo de navegación según rol
             if (currentUserProfile.role === 'admin') {
                 router.navigate('/dashboardAdmin');
-                
+                return;
             } else if (currentUserProfile.role === 'empleado') {
                 router.navigate('/dashboardEmpleado');
-                
+                return;
             } else {
                 router.navigate('/dashboard');
-                
+                return;
             }
         });
     
@@ -52,102 +52,9 @@ onAuthStateChanged(auth, async (user) => {
         //Alpine.store('user', null);
 
         router.navigate('/login');
-        
+        return;
     }
 });
-
-
-
-router.on({
-'/login': async () => {
-    if (auth.currentUser) {
-      router.navigate('/dashboard');
-      
-    }
-
-    initCommon();
-
-    const html = await fetch('/views/login.html').then(r => r.text());
-    document.getElementById('app').innerHTML = html;
-    // El navegador no ejecuta los <script> embebidos en el HTML inyectado con innerHTML.
-    const module = await import('/js/views/login.js');
-    module.init();
-    Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
-  },
-
-'/dashboard': async () => {
-    if (!auth.currentUser || !currentUserProfile) {
-      router.navigate('/login');
-      
-    }
-    
-    initCommon();
-
-    // ejemplo de navegación según rol
-    if (currentUserProfile.role === 'admin') {
-        router.navigate('/dashboardAdmin');
-        
-    } else if (currentUserProfile.role === 'empleado') {
-        router.navigate('/dashboardEmpleado');
-        
-    } else {
-        
-        const html = await fetch('/views/dashboard.html').then(r => r.text());
-        document.getElementById('app').innerHTML = html;
-        const module = await import('/js/views/dashboard.js');
-        module.init();
-        Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
-    }
-  },
-
-'/dashboardAdmin': async () => {
-    if (!auth.currentUser || !currentUserProfile) {
-      router.navigate('/login');
-      
-    }
-
-    initCommon();
-
-    // ejemplo de navegación según rol
-    if (currentUserProfile.role !== 'admin') {
-        router.navigate('/dashboard');
-        
-    } else {        
-        const html = await fetch('/views/dashboardAdmin.html').then(r => r.text());
-        document.getElementById('app').innerHTML = html;
-        const module = await import('/js/views/dashboardAdmin.js');
-        module.init();    
-        Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
-    }
-  },
-
-'/dashboardEmpleado': async () => {
-    if (!auth.currentUser || !currentUserProfile) {
-      router.navigate('/login');
-      
-    }
-
-    initCommon();
-
-    // ejemplo de navegación según rol
-    if (currentUserProfile.role !== 'empleado') {
-        router.navigate('/dashboard');
-        
-    } else {
-        
-        const html = await fetch('/views/dashboardEmpleado.html').then(r => r.text());
-        document.getElementById('app').innerHTML = html;
-        const module = await import('/js/views/dashboardEmpleado.js');
-        module.init();
-        Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
-    }
-  },
-
-  '*': async () => {
-    router.navigate('/dashboard');
-    
-  }
-}).resolve();
 
 // Cargar nav.html al iniciar
 async function loadNavbar() {
@@ -160,5 +67,215 @@ async function loadNavbar() {
 // Inicializar
 document.addEventListener('DOMContentLoaded', async () => {
   await loadNavbar();
-  router.updatePageLinks();
+  await initCommon();
 });
+
+
+
+router.on({
+'/login': async () => {
+    if (auth.currentUser) {
+      router.navigate('/dashboard');
+      return;
+    }
+
+    const module = await import('/js/views/login.js');
+    module.init();
+
+    const html = await fetch('/views/login.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+    // El navegador no ejecuta los <script> embebidos en el HTML inyectado con innerHTML.
+
+    Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
+  },
+
+'/dashboard': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    // ejemplo de navegación según rol
+    if (currentUserProfile.role === 'admin') {
+        router.navigate('/dashboardAdmin');
+        return;
+    } else if (currentUserProfile.role === 'empleado') {
+        router.navigate('/dashboardEmpleado');
+        return;
+    } else {
+         const module = await import('/js/views/dashboard.js');
+        module.init();
+
+        const html = await fetch('/views/dashboard.html').then(r => r.text());
+        document.getElementById('app').innerHTML = html;
+
+        Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
+    }
+  },
+
+'/dashboardAdmin': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    // ejemplo de navegación según rol
+    if (currentUserProfile.role !== 'admin') {
+        router.navigate('/dashboard');
+        return;
+    } else {        
+        const module = await import('/js/views/dashboardAdmin.js');
+        module.init(); 
+        
+        const html = await fetch('/views/dashboardAdmin.html').then(r => r.text());
+        document.getElementById('app').innerHTML = html;
+   
+        Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
+    }
+  },
+
+'/dashboardEmpleado': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    // ejemplo de navegación según rol
+    if (currentUserProfile.role !== 'empleado') {
+        router.navigate('/dashboard');
+        return;
+    } else {
+        
+        const module = await import('/js/views/dashboardEmpleado.js');
+        module.init();
+        
+        const html = await fetch('/views/dashboardEmpleado.html').then(r => r.text());
+        document.getElementById('app').innerHTML = html;
+
+        Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
+    }
+  },
+
+  
+'/tpv': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+    const module = await import('/js/views/tpv.js');
+    module.init();
+
+    const html = await fetch('/views/tpv.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
+  },
+
+  '/personal': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    const module = await import('/js/views/personal.js');
+    module.init();
+
+    const html = await fetch('/views/personal.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/gastos': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    const module = await import('/js/views/gastos.js');
+    module.init();
+
+    const html = await fetch('/views/gastos.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/gestionFacturas': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    const module = await import('/js/views/gestionFacturas.js');
+    module.init();
+
+    const html = await fetch('/views/gestionFacturas.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/gestionDocumentos': async () => {
+    if (!auth.currentUser || !currentUserProfile) {   
+      router.navigate('/login');
+      return;
+    }
+
+    const module = await import('/js/views/gestionDocumentos.js');
+    module.init();  
+
+    const html = await fetch('/views/gestionDocumentos.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;  
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/gestionImpuestos': async () => {
+    if (!auth.currentUser || !currentUserProfile) { 
+      router.navigate('/login');
+      return;
+    }   
+    const module = await import('/js/views/gestionImpuestos.js');
+    module.init();  
+
+    const html = await fetch('/views/gestionImpuestos.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+    Alpine.initTree(document.getElementById('app'));
+    },  
+
+  '/gestionInformes': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    } 
+    const module = await import('/js/views/gestionInformes.js');
+    module.init();    
+
+    const html = await fetch('/views/gestionInformes.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;  
+
+    Alpine.initTree(document.getElementById('app'));
+    },  
+
+  '/miFicha': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+
+    const module = await import('/js/views/miFicha.js');
+    module.init();
+
+    const html = await fetch('/views/miFicha.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+
+  '*': async () => {
+    router.navigate('/dashboard');
+    return;
+  }
+}).resolve();
+

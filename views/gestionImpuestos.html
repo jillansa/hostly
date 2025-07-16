@@ -1,0 +1,48 @@
+
+    <div class="container">
+        <h1>Gestión de Impuestos Empresariales</h1>
+        <form id="impuestoForm">
+            <label for="tipo">Tipo de Impuesto</label>
+            <select id="tipo" name="tipo" required>
+                <option value="">Seleccione...</option>
+                <option value="IVA">IVA</option>
+                <option value="Sociedades">Sociedades</option>
+                <option value="Autónomo">Autónomo</option>
+            </select>
+            <label for="periodo">Periodo</label>
+            <input type="month" id="periodo" name="periodo" required>
+            <label for="importe">Importe (€)</label>
+            <input type="number" id="importe" name="importe" min="0" step="0.01" required>
+            <button type="submit">Registrar Impuesto</button>
+        </form>
+        <table id="tablaImpuestos">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Periodo</th>
+                    <th>Importe (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas de impuestos registradas aparecerán aquí -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const form = document.getElementById('impuestoForm');
+        const tabla = document.getElementById('tablaImpuestos').querySelector('tbody');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const tipo = form.tipo.value;
+            const periodo = form.periodo.value;
+            const importe = form.importe.value;
+
+            if (tipo && periodo && importe) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${tipo}</td><td>${periodo}</td><td>${parseFloat(importe).toFixed(2)}</td>`;
+                tabla.appendChild(row);
+                form.reset();
+            }
+        });
+    </script>

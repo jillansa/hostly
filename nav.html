@@ -1,26 +1,21 @@
 <nav x-data="{ open: false }" class="bg-gray-800 text-white">
   <div class="flex justify-between items-center p-4">
-    <div class="text-xl font-bold">Mi App</div>
+    <div class="text-xl font-bold">Hostly Manager</div>
+    
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <h2>Bienvenido (empleado) <span x-text="$store.user?.email"></span></h2>
+    </div>    
+    
     <button @click="open = !open" class="md:hidden">☰</button>
-    <ul class="hidden md:flex gap-4">
 
+    <ul class="hidden md:flex gap-4">
 
       <li class="relative group">
         <a href="/dashboard" data-navigo class="nav-link">Dashboard</a>
       </li>
 
       <li class="relative group">
-        <button class="nav-link flex items-center gap-1 focus:outline-none">
-            TPV/Caja
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <ul class="absolute left-0 mt-2 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-10 min-w-[140px]">
-          <li><a href="/tpv" data-navigo class="nav-link">Panel</a></li>
-          <li><a href="/tpv" data-navigo class="block px-4 py-2 hover:bg-gray-700">Pedidos</a></li>                    
-          <li><a href="/tpv" data-navigo class="block px-4 py-2 hover:bg-gray-700">Comandero</a></li>
-          <li><a href="/tpv" data-navigo class="block px-4 py-2 hover:bg-gray-700">Cobrar</a></li>
-          <li><a href="/tpv" data-navigo class="block px-4 py-2 hover:bg-gray-700">Reparto</a></li>
-        </ul>
+        <a href="/tpv" data-navigo class="nav-link">TPV/Caja</a>        
       </li>
       
       <li class="relative group">
@@ -28,14 +23,9 @@
       </li>
 
       <li class="relative group">
-        <a href="/productos" data-navigo class="nav-link">Productos</a>
+        <a href="/gastos" data-navigo class="nav-link">Gastos</a>
       </li>
 
-      <li class="relative group">
-        <a href="/productos" data-navigo class="nav-link">Factura</a>
-        <a href="/productos" data-navigo class="nav-link">Imformes</a>
-      </li>
-      
       <li class="relative group">
         <button class="nav-link flex items-center gap-1 focus:outline-none">
           Locales
@@ -57,35 +47,37 @@
           <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <ul class="absolute left-0 mt-2 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-10 min-w-[160px]">
-          <li><a href="/gestion/impuestos" data-navigo class="block px-4 py-2 hover:bg-gray-700">Impuestos</a></li>
-          <li><a href="/gestion/informes" data-navigo class="block px-4 py-2 hover:bg-gray-700">Informes</a></li>
-         </ul>
-      </li>
-      <li class="relative group">
-         <button class="flex items-center w-full px-4 py-2 hover:bg-gray-700 focus:outline-none">
-              Documentos
-              <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <li><a href="/gestionImpuestos" data-navigo class="block px-4 py-2 hover:bg-gray-700">Impuestos</a></li>
+          <li><a href="/gestionInformes" data-navigo class="block px-4 py-2 hover:bg-gray-700">Informes</a></li>
+          <li class="relative group">
+            <button class="flex items-center w-full px-4 py-2 hover:bg-gray-700 focus:outline-none">
+                Documentos
+                <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
             <ul class="absolute left-full top-0 mt-0 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-10 min-w-[140px]">
-              <li><a href="/gestion/documentos/anadir" data-navigo class="block px-4 py-2 hover:bg-gray-700">Añadir</a></li>
-              <li><a href="/gestion/documentos/escanear" data-navigo class="block px-4 py-2 hover:bg-gray-700">Escanear</a></li>
-              <li><a href="/gestion/documentos/buscar" data-navigo class="block px-4 py-2 hover:bg-gray-700">Buscar</a></li>
+              <li><a href="/gestionDocumentos" data-navigo class="block px-4 py-2 hover:bg-gray-700">Añadir</a></li>
+              <li><a href="/gestionDocumentos" data-navigo class="block px-4 py-2 hover:bg-gray-700">Escanear</a></li>
+              <li><a href="/gestionDocumentos" data-navigo class="block px-4 py-2 hover:bg-gray-700">Buscar</a></li>      
+              
             </ul>
-        </li>
-      <li class="relative group">
-        <button class="nav-link flex items-center gap-1 focus:outline-none">
-          Mi Ficha
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <ul class="absolute left-0 mt-2 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-10 min-w-[120px]">
-          <li><a href="/ficha/datos" data-navigo class="block px-4 py-2 hover:bg-gray-700">Datos</a></li>
+            
+          </li>
+          <li><a href="/gestionFacturas" data-navigo class="block px-4 py-2 hover:bg-gray-700">Facturas</a></li>      
         </ul>
       </li>
+
       <li class="relative group">
-        <a href="/fichaje" data-navigo class="nav-link">Fichaje</a>
+        <a href="/miFicha" data-navigo class="nav-link">Mi Ficha</a>
       </li>
 
     </ul>
+
+    <div>
+            <span id="user-email" class="mr-4 text-sm"></span>
+            <button @click="logout()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md text-sm">Salir</button>
+    </div>
+
+
   </div>
  
 </nav>
