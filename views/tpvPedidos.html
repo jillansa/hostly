@@ -1,20 +1,37 @@
-PEDIDOS
+
 <!-- Contenido de Pedidos -->
 <div id="orders-content" class="admin-tab-content">
-    <h2 class="text-2xl font-bold mb-4">Gestión de Pedidos</h2>
-    <button id="show-add-order-form" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mb-4">Crear Nuevo Pedido</button>
-    
-    <!-- Formulario para añadir pedido -->
-    <form id="add-order-form" class="p-4 mb-4 bg-gray-50 border rounded-lg space-y-3">
-        <h3 class="text-lg font-semibold">Nuevo Pedido</h3>
-        <input id="customer-name" type="text" placeholder="Nombre del Cliente" class="w-full p-2 border rounded-md">
-        <input id="customer-address" type="text" placeholder="Dirección de Entrega" class="w-full p-2 border rounded-md">
-        <textarea id="order-items" placeholder="Artículos del pedido (ej: Pizza Barbacoa, 2x Coca-Cola)" class="w-full p-2 border rounded-md"></textarea>
-        <div class="flex gap-2">
-            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md">Guardar Pedido</button>
-            <button type="button" id="cancel-add-order" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">Cancelar</button>
-        </div>
-    </form>
+    <h2 class="text-2xl font-bold mb-4">Seguimiento de Pedidos</h2>
 
-    <div id="admin-orders-list" class="space-y-4"></div>
+    <div class="flex flex-wrap gap-6">
+        <!-- Pedidos Recientes -->
+        <div class="flex-1 min-w-[220px] bg-white rounded shadow p-4">
+            <h3 class="font-semibold text-lg mb-2">Recientes</h3>
+            <ul id="orders-recent" class="space-y-2">
+                <!-- Aquí se listarán los pedidos recientes -->
+            </ul>
+        </div>
+        <!-- En Preparación -->
+        <div class="flex-1 min-w-[220px] bg-white rounded shadow p-4">
+            <h3 class="font-semibold text-lg mb-2">En Preparación</h3>
+            <ul id="orders-preparing" class="space-y-2">
+                <!-- Aquí se listarán los pedidos en preparación -->
+            </ul>
+        </div>
+        <!-- Pendientes de Reparto -->
+        <div class="flex-1 min-w-[220px] bg-white rounded shadow p-4">
+            <h3 class="font-semibold text-lg mb-2">Pendientes de Reparto</h3>
+            <ul id="orders-delivery" class="space-y-2">
+                <!-- Aquí se listarán los pedidos pendientes de reparto -->
+            </ul>
+        </div>
+        <!-- Pendientes de Recoger -->
+        <div class="flex-1 min-w-[220px] bg-white rounded shadow p-4">
+            <h3 class="font-semibold text-lg mb-2">Pendientes de Recoger</h3>
+            <ul id="orders-pickup" class="space-y-2">
+                <!-- Aquí se listarán los pedidos pendientes de recoger -->
+            </ul>
+        </div>
+    </div>
+
 </div>
