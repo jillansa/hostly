@@ -170,6 +170,14 @@ router.on({
 
     // volver a escanear los <a data-navigo> que se inyectaron en la nueva vista
     router.updatePageLinks();
+    /*
+    Navigo funciona así:
+      Cuando lo inicializas, escanea el DOM en busca de todos los <a data-navigo> que ya existen.
+      Intercepta sus click para evitar que el navegador haga un GET real y en su lugar dispara la ruta SPA.
+      Pero cuando tú inyectas HTML nuevo con fetch + innerHTML, esos enlaces no existían al momento del escaneo inicial → quedan “huérfanos” y el navegador intenta ir al servidor (404).
+      Por eso router.updatePageLinks() es la forma de decirle a Navigo:
+       “Oye, vuelve a mirar el DOM, que acabo de meter nuevos <a data-navigo>”.
+      */
 
     Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
   },

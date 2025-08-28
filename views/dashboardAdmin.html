@@ -3,29 +3,30 @@
 
                 <!-- VISTA DE ADMINISTRADOR -->
                 <div id="admin-view">
-                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                        <div class="bg-blue-500 text-white p-4 rounded-lg shadow-md">
-                            <h3 class="font-bold">Empleados Activos</h3>
-                            <p id="active-employees-stat" class="text-2xl">0</p>
+                     <div class="grid-card-panels">
+                        <div class="card-panel blue">
+                            <h3 class="card-panel-title">Ventas</h3>
+                            <p id="active-employees-stat" class="card-panel-value">9</p>
                         </div>
-                        <div class="bg-green-500 text-white p-4 rounded-lg shadow-md">
-                            <h3 class="font-bold">Pedidos Pendientes</h3>
-                            <p id="pending-orders-stat" class="text-2xl">0</p>
+                        <div class="card-panel red">
+                            <h3 class="card-panel-title">Gastos</h3>
+                            <p id="pending-orders-stat" class="card-panel-value">12</p>
                         </div>
-                        <div class="bg-purple-500 text-white p-4 rounded-lg shadow-md">
-                            <h3 class="font-bold">Repartidores en Ruta</h3>
-                            <p id="drivers-on-route-stat" class="text-2xl">0</p>
+                        <div class="card-panel green">
+                            <h3 class="card-panel-title">Beneficio Bruto</h3>
+                            <p id="drivers-on-route-stat" class="card-panel-value">3</p>
                         </div>
+
                     </div>
                     
                     <!-- Pestañas de Navegación del Admin -->
-                    <div class="mb-4 border-b border-gray-200">
-                        <nav id="admin-tabs" class="flex space-x-4" aria-label="Tabs">
-                            <button data-tab="map" class="admin-tab text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-t-md">Panel</button>
-                            <button data-tab="map" class="admin-tab text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-t-md">Repartos</button>
-                            <button data-tab="orders" class="admin-tab text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-t-md">Gestión Pedidos</button>
-                            <button data-tab="staff" class="admin-tab text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-t-md">Comandero</button>
-                            <button data-tab="time-entries" class="admin-tab text-gray-500 hover:text-gray-700 px-3 py-2 font-medium text-sm rounded-t-md">Cobrar</button>
+                    <div class="div-con-separador">
+                        <nav class="admin-tabs" aria-label="Tabs">
+                            
+                            <a href="/tpv" data-navigo class="admin-tab">Panel</a>
+                            <a href="/tpv" data-navigo class="admin-tab">Repartos</a>
+                            <a href="/tpv" data-navigo class="admin-tab">Gestión Pedidos</a>
+                            <a href="/tpv" data-navigo class="admin-tab">Comandero</a>
             
                         </nav>
                     </div>
