@@ -168,6 +168,9 @@ router.on({
     const html = await fetch('/views/tpv.html').then(r => r.text());
     document.getElementById('app').innerHTML = html;
 
+    // volver a escanear los <a data-navigo> que se inyectaron en la nueva vista
+    router.updatePageLinks();
+
     Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
   },
 
