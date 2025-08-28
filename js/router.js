@@ -171,6 +171,62 @@ router.on({
     Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
   },
 
+  '/tpvPedidos': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+    const module = await import('/js/views/tpvPedidos.js');
+    module.init();
+
+    const html = await fetch('/views/tpvPedidos.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/tpvRepartos': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+    const module = await import('/js/views/tpvRepartos.js');
+    module.init();
+
+    const html = await fetch('/views/tpvRepartos.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/tpvComandero': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+    const module = await import('/js/views/tpvComandero.js');
+    module.init();
+
+    const html = await fetch('/views/tpvComandero.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
+  '/tpvCobrar': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+    const module = await import('/js/views/tpvCobrar.js');
+    module.init();
+
+    const html = await fetch('/views/tpvCobrar.html').then(r => r.text());
+    document.getElementById('app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('app'));
+    },
+
   '/personal': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
