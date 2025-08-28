@@ -163,6 +163,12 @@ body { font-family: 'Inter', sans-serif; }
     .card-panel.red { background-color: #dc2626; }
     .card-panel.gray { background-color: #6b7280; }
     
+    .card-panel.black-outline {
+        background-color: #fff;
+        border: 2px solid #000;
+        color: #000;
+    }
+
     .card-panel.red-outline {
         background-color: #fff;
         border: 2px solid #dc2626;
