@@ -157,8 +157,11 @@ body { font-family: 'Inter', sans-serif; }
         align-items: flex-start;
     }
     .card-panel.blue { background-color: #3b82f6; }
-    .card-panel.green { background-color: #c57f16; }
+    .card-panel.green { background-color: #10b981; }
     .card-panel.purple { background-color: #a78bfa; }
+    .card-panel.orange { background-color: #f97316; }
+    .card-panel.red { background-color: #dc2626; }
+    .card-panel.gray { background-color: #6b7280; }
 
     .card-panel-title {
         font-weight: bold;
@@ -169,3 +172,37 @@ body { font-family: 'Inter', sans-serif; }
         font-size: 2rem;
     }
 
+/***************************************************/
+/* Estilos para div de separación */
+/***************************************************/
+    .div-con-separador {
+        margin-bottom: 1rem;       /* mb-4 */
+        border-bottom: 1px solid #e5e7eb; /* border-b + border-gray-200 */
+    } 
+
+/***************************************************/
+/* Estilos para sub-menu de Navegación  */
+/***************************************************/
+
+    /* Estilos para el nav */
+    .admin-tabs {
+        display: flex;
+        gap: 1rem; /* reemplaza space-x-4 */
+    }
+
+    /* Estilos para los links */
+    .admin-tabs, .admin-tab {
+        color: #6b7280;               /* text-gray-500 */
+        padding: 0.5rem 0.75rem;      /* py-2 px-3 */
+        font-weight: 500;             /* font-medium */
+        font-size: 0.875rem;          /* text-sm */
+        border-top-left-radius: 0.375rem; /* rounded-t-md */
+        border-top-right-radius: 0.375rem;
+        text-decoration: none;        /* quitar subrayado por defecto */
+        transition: color 0.2s;       /* para efecto hover suave */
+    }
+
+    /* Hover de los links */
+    .admin-tabs, .admin-tab:hover {
+        color: #374151;               /* text-gray-700 */
+    }

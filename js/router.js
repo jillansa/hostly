@@ -180,9 +180,9 @@ router.on({
     module.init();
 
     const html = await fetch('/views/tpvPedidos.html').then(r => r.text());
-    document.getElementById('app').innerHTML = html;
+    document.getElementById('tpv-content-app').innerHTML = html;
 
-    Alpine.initTree(document.getElementById('app'));
+    Alpine.initTree(document.getElementById('tpv-content-app'));
     },
 
   '/tpvRepartos': async () => {
@@ -194,9 +194,9 @@ router.on({
     module.init();
 
     const html = await fetch('/views/tpvRepartos.html').then(r => r.text());
-    document.getElementById('app').innerHTML = html;
+    document.getElementById('tpv-content-app').innerHTML = html;
 
-    Alpine.initTree(document.getElementById('app'));
+    Alpine.initTree(document.getElementById('tpv-content-app'));
     },
 
   '/tpvComandero': async () => {
@@ -208,9 +208,9 @@ router.on({
     module.init();
 
     const html = await fetch('/views/tpvComandero.html').then(r => r.text());
-    document.getElementById('app').innerHTML = html;
+    document.getElementById('tpv-content-app').innerHTML = html;
 
-    Alpine.initTree(document.getElementById('app'));
+    Alpine.initTree(document.getElementById('tpv-content-app'));
     },
 
   '/tpvCobrar': async () => {
