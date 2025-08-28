@@ -233,9 +233,9 @@ router.on({
     module.init();
 
     const html = await fetch('/views/tpvCobrar.html').then(r => r.text());
-    document.getElementById('app').innerHTML = html;
+    document.getElementById('tpv-content-app').innerHTML = html;
 
-    Alpine.initTree(document.getElementById('app'));
+    Alpine.initTree(document.getElementById('tpv-content-app'));
     },
 
   '/personal': async () => {
