@@ -1,0 +1,32 @@
+
+<!-- Contenido de Pedidos -->
+<div id="orders-content" class="admin-tab-content">
+    <h2 class="text-2xl font-bold mb-4">Orden de Pedido</h2>
+    <button id="show-add-order-form" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mb-4">Crear Nuevo Pedido</button>
+    <button id="show-add-order-form" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md mb-4">Añadir Producto/s a Pedido</button>
+
+    <!-- Formulario para añadir pedido -->
+    <form id="add-order-form" class="p-4 mb-4 bg-gray-50 border rounded-lg space-y-3">
+        <h3 class="text-lg font-semibold">Nuevo Pedido</h3>
+        <input id="customer-name" type="text" placeholder="Nombre del Cliente" class="w-full p-2 border rounded-md">
+        <input id="customer-address" type="text" placeholder="Dirección de Entrega" class="w-full p-2 border rounded-md">
+        <textarea id="order-items" placeholder="Artículos del pedido (ej: Pizza Barbacoa, 2x Coca-Cola)" class="w-full p-2 border rounded-md"></textarea>
+        <div class="flex gap-2">
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md">Confirmar</button>
+            <button type="button" id="cancel-add-order" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">Cancelar</button>
+        </div>
+    </form>
+
+    <!-- Formulario para añadir productos a pedido -->
+    <form id="add-order-form" class="p-4 mb-4 bg-gray-50 border rounded-lg space-y-3">
+        <h3 class="text-lg font-semibold">Añadir producto/s a pedido</h3>
+        <input id="customer-name" type="text" placeholder="Nombre del Cliente" class="w-full p-2 border rounded-md">
+        <input id="customer-address" type="text" placeholder="Dirección de Entrega" class="w-full p-2 border rounded-md">
+        <textarea id="order-items" placeholder="Artículos del pedido (ej: Pizza Barbacoa, 2x Coca-Cola)" class="w-full p-2 border rounded-md"></textarea>
+        <div class="flex gap-2">
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md">Confirmar</button>
+            <button type="button" id="cancel-add-order" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">Cancelar</button>
+        </div>
+    </form>
+
+</div>
