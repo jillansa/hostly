@@ -89,6 +89,10 @@ router.on({
     Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
   },
 
+/************************/
+/* DASHBOARD */
+/************************/
+
 '/dashboard': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
@@ -170,8 +174,10 @@ router.on({
     }
   },
 
-  
-'/tpv': async () => {
+  /************************/
+  /* TPV */
+  /************************/
+  '/tpv': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
       return;
@@ -182,11 +188,34 @@ router.on({
     const html = await fetch('/views/tpv.html').then(r => r.text());
     document.getElementById('app').innerHTML = html;
 
+    const module2 = await import('/js/views/tpvGestor.js');
+    module.init();
+
+    const html2 = await fetch('/views/tpvGestor.html').then(r => r.text());
+    document.getElementById('tpv-content-app').innerHTML = html;
+
     // volver a escanear los <a data-navigo> que se inyectaron en la nueva vista
     router.updatePageLinks();
 
     Alpine.initTree(document.getElementById('app')); // para reactivar Alpine en el nuevo HTML
+    Alpine.initTree(document.getElementById('tpv-content-app'));
   },
+
+  
+  '/tpvGestor': async () => {
+    if (!auth.currentUser || !currentUserProfile) {
+      router.navigate('/login');
+      return;
+    }
+    const module = await import('/js/views/tpvGestor.js');
+    module.init();
+
+    const html = await fetch('/views/tpvGestor.html').then(r => r.text());
+    document.getElementById('tpv-content-app').innerHTML = html;
+
+    Alpine.initTree(document.getElementById('tpv-content-app'));
+    },
+
 
   '/tpvPedidos': async () => {
     if (!auth.currentUser || !currentUserProfile) {
@@ -230,20 +259,10 @@ router.on({
     Alpine.initTree(document.getElementById('tpv-content-app'));
     },
 
-  '/tpvGestor': async () => {
-    if (!auth.currentUser || !currentUserProfile) {
-      router.navigate('/login');
-      return;
-    }
-    const module = await import('/js/views/tpvGestor.js');
-    module.init();
 
-    const html = await fetch('/views/tpvGestor.html').then(r => r.text());
-    document.getElementById('tpv-content-app').innerHTML = html;
-
-    Alpine.initTree(document.getElementById('tpv-content-app'));
-    },
-
+    /************************/
+    /* PERSONAL */
+    /************************/
   '/personal': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
@@ -259,6 +278,10 @@ router.on({
     Alpine.initTree(document.getElementById('app'));
     },
 
+
+    /************************/
+    /* GASTOS*/
+    /************************/
   '/gastos': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
@@ -274,6 +297,10 @@ router.on({
     Alpine.initTree(document.getElementById('app'));
     },
 
+
+    /************************/
+    /* GESTION */
+    /************************/
   '/gestionFacturas': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
@@ -350,5 +377,6 @@ router.on({
     router.navigate('/dashboard');
     return;
   }
+
 }).resolve();
 
