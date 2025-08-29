@@ -27,22 +27,24 @@ body { font-family: 'Inter', sans-serif; }
     .titulo-principal, h1 {
         font-family: 'Segoe UI', Arial, sans-serif;
         font-size: 2.2rem;
+        line-height: 2.2rem;      /* ajusta la altura de línea */
         color: #2c3e50;
         text-shadow: 1px 2px 8px #e0e0e0;
-        margin-bottom: 1rem;
+        margin-bottom: 1rem;      
         letter-spacing: 1px;
-        font-weight: 700;
+        font-weight: 800;
         border-bottom: 3px solid #3498db;
         display: inline-block;
         padding-bottom: 0.3em;
     }
     h2 {
         font-family: 'Segoe UI', Arial, sans-serif;
-        font-size: 1.6rem;
+        font-size: 1.9rem;
+        line-height: 2.2rem;      /* ajusta la altura de línea */
         color: #2980b9;
         margin-top: 2rem;
-        margin-bottom: 0.7rem;
-        font-weight: 600;
+        margin-bottom: 1rem;
+        font-weight: 700;
         border-left: 4px solid #3498db;
         padding-left: 0.5em;
         background: #f4faff;
