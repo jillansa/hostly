@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<style>
+#map {
+    width: 100%;
+    height: 500px;
+}
+</style>
 
 <!-- Contenido de Mapa -->
 <div id="map-content" class="admin-tab-content">
@@ -6,27 +13,27 @@
     <div id="map"></div>
 
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
     // Coordenadas iniciales (Madrid)
     const map = L.map('map').setView([40.4168, -3.7038], 14);
 
     // Capa base de OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
+      attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
     // Repartidores
     const repartidores = [
-        { id: 1, nombre: "Repartidor 1", lat: 40.4168, lng: -3.7038 },
-        { id: 2, nombre: "Repartidor 2", lat: 40.4188, lng: -3.7058 },
-        { id: 3, nombre: "Repartidor 3", lat: 40.4148, lng: -3.7018 }
+      { id: 1, nombre: "Repartidor 1", lat: 40.4168, lng: -3.7038 },
+      { id: 2, nombre: "Repartidor 2", lat: 40.4188, lng: -3.7058 },
+      { id: 3, nombre: "Repartidor 3", lat: 40.4148, lng: -3.7018 }
     ];
 
     // Añadir marcadores
     repartidores.forEach(rep => {
-        L.marker([rep.lat, rep.lng]).addTo(map)
+      L.marker([rep.lat, rep.lng]).addTo(map)
         .bindPopup(rep.nombre);
     });
-    </script>
+  </script>
 </div>
