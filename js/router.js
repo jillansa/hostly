@@ -230,15 +230,15 @@ router.on({
     Alpine.initTree(document.getElementById('tpv-content-app'));
     },
 
-  '/tpvCobrar': async () => {
+  '/tpvGestor': async () => {
     if (!auth.currentUser || !currentUserProfile) {
       router.navigate('/login');
       return;
     }
-    const module = await import('/js/views/tpvCobrar.js');
+    const module = await import('/js/views/tpvGestor.js');
     module.init();
 
-    const html = await fetch('/views/tpvCobrar.html').then(r => r.text());
+    const html = await fetch('/views/tpvGestor.html').then(r => r.text());
     document.getElementById('tpv-content-app').innerHTML = html;
 
     Alpine.initTree(document.getElementById('tpv-content-app'));

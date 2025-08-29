@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos Abiertos</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .estado-reciente { color: #2196F3; }
+        .estado-preparacion { color: #FF9800; }
+        .estado-pendiente { color: #FFC107; }
+        .estado-servido { color: #4CAF50; }
+    </style>
+</head>
+<body>
+    <h2>Pedidos Abiertos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nº Pedido</th>
+                <th>Estado</th>
+                <th>Modo de Entrega</th>
+                <th>Resumen Cocina</th>
+                <th>Resumen Bebida</th>
+                <th>Resumen Barra</th>
+                <th>Editar</th>
+                <th>Cobrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Ejemplo de fila de pedido -->
+            <tr>
+                <td>1023</td>
+                <td class="estado-reciente">Reciente</td>
+                <td>Recoger</td>
+                <td>2x Hamburguesa, 1x Ensalada</td>
+                <td>1x Agua, 2x Refresco</td>
+                <td>1x Tapa Jamón</td>
+                <td><button type="button">Editar</button></td>
+                <td><button type="button">Cobrar</button></td>
+            </tr>
+            <tr>
+                <td>1024</td>
+                <td class="estado-preparacion">En preparación</td>
+                <td>Servir mesa</td>
+                <td>1x Pizza, 2x Pasta</td>
+                <td>1x Vino</td>
+                <td>2x Aceitunas</td>
+                <td><button type="button">Editar</button></td>
+                <td><button type="button">Cobrar</button></td>
+            </tr>
+            <tr>
+                <td>1025</td>
+                <td class="estado-pendiente">Pendiente reparto</td>
+                <td>Reparto</td>
+                <td>3x Bocadillo</td>
+                <td>2x Cerveza</td>
+                <td>1x Patatas Bravas</td>
+                <td><button type="button">Editar</button></td>
+                <td><button type="button">Cobrar</button></td>
+            </tr>
+            <tr>
+                <td>1026</td>
+                <td class="estado-servido">Servido</td>
+                <td>Barra</td>
+                <td>1x Tortilla</td>
+                <td>1x Café</td>
+                <td>1x Croqueta</td>
+                <td><button type="button">Editar</button></td>
+                <td><button type="button">Cobrar</button></td>
+            </tr>
+            <!-- Agrega más filas según sea necesario -->
+        </tbody>
+    </table>
+</body>
+</html>
