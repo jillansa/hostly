@@ -4,34 +4,247 @@
                 <!-- VISTA DE ADMINISTRADOR --> 
                 <div id="admin-view">
                      <div class="grid-card-panels">
-                        <div class="card-panel black-outline">
+                        
+                        <!-- CARD FACTURACION -->
+                        <div class="card-panel green-outline">
                             <h3 class="card-panel-title">Facturación</h3>
-                            <p id="active-employees-stat" class="card-panel-value">9</p>
+                            <p id="active-employees-stat" class="card-panel-value">9.432,23€</p> <span> Mes en curso</span>
+                            <div class="flex-gap-32">                                
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Hoy:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Semana actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Mes actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Media diaria:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Semanal:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Mensual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                            </div>                            
                         </div>
-                        <div class="card-panel black-outline">
+
+
+                        <!-- GASTOS-->
+                         <div class="card-panel red-outline">
                             <h3 class="card-panel-title">Gastos</h3>
-                            <p id="pending-orders-stat" class="card-panel-value">13</p>
+                            <p id="pending-orders-stat" class="card-panel-value">13</p> <span> Mes en curso</span>
+                            <div class="flex-gap-32">                                
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Hoy:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Semana actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Mes actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Media diaria:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Semanal:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Mensual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                            </div>            
                         </div>
-                        <div class="card-panel black-outline">
+
+
+
+                        <!-- BENEFICIO BRUTO -->
+                         <div class="card-panel black-outline">
                             <h3 class="card-panel-title">Beneficio Bruto</h3>
-                            <p id="drivers-on-route-stat" class="card-panel-value">3</p>
+                            <p id="drivers-on-route-stat" class="card-panel-value">3</p> <span> Mes en curso</span>
+                            <div class="flex-gap-32">                                
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Hoy:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Semana actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Mes actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Media diaria:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Semanal:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Mensual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                            </div>     
                         </div>
+
+
+                        <!-- TURNOS -->
                         <div class="card-panel black-outline">
                             <h3 class="card-panel-title">Turnos</h3>
                             <p id="drivers-on-route-stat" class="card-panel-value">3</p>
+                            <table class="shift-table" style="width:100%; font-size:0.9em; border-collapse:collapse;">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <template x-for="n in 7" :key="n">
+                                            <th x-text="new Date(Date.now() + (n-1)*24*60*60*1000).toLocaleDateString('es-ES', { weekday: 'short', day: 'numeric' })"></th>
+                                        </template>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cocineros</td>
+                                        <template x-for="n in 7" :key="'c'+n">
+                                            <td x-text="turnos.cocineros[n-1] ?? '-'"></td>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <td>Repartidores</td>
+                                        <template x-for="n in 7" :key="'r'+n">
+                                            <td x-text="turnos.repartidores[n-1] ?? '-'"></td>
+                                        </template>
+                                    </tr>
+                                    <tr>
+                                        <td>Camareros</td>
+                                        <template x-for="n in 7" :key="'ca'+n">
+                                            <td x-text="turnos.camareros[n-1] ?? '-'"></td>
+                                        </template>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+
+                        <!-- INVENTARIO   -->
                         <div class="card-panel black-outline">
                             <h3 class="card-panel-title">Inventario</h3>
                             <p id="drivers-on-route-stat" class="card-panel-value">3</p>
+
+
+                            <div class="flex-gap-32">                                
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Pagos pendientes:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Pagos realizados (mensual):</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Mes actual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Media Mensual:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Semanal:</span>
+                                        <span class="bold">€0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Media Mensual:</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                    
+                                </div>
+                            </div>     
                         </div>
+                        
+
+                        <!-- PROVEEDORES   -->
+                        <div class="card-panel black-outline">
+                            <h3 class="card-panel-title">Proveedores</h3>
+                            <p id="drivers-on-route-stat" class="card-panel-value">3</p>
+
+                            <div class="flex-gap-32">                                
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Pagos pendientes:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                    <div class="flex-between">
+                                        <span>Pagos realizados (mensual):</span>
+                                        <span class="bold">€0</span>
+                                    </div>                                                                   
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="flex-between">
+                                        <span>Media Mensual:</span>
+                                        <span class="bold">€1.203,0</span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        
+                        <!-- GESTORIA -->
                         <div class="card-panel black-outline">
                             <h3 class="card-panel-title">Gestoria</h3>
-                            <p id="drivers-on-route-stat" class="card-panel-value">3</p>
+
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFA500" viewBox="0 0 16 16" style="margin-right: 6px;">
+                                    <path d="M7.938 2.016a1 1 0 0 1 1.124 0l6.857 4.857A1 1 0 0 1 16 7.857v6.286A1 1 0 0 1 15 15H1a1 1 0 0 1-1-1V7.857a1 1 0 0 1 .081-.984l6.857-4.857zM8 4.236L2 8.857V14h12V8.857L8 4.236zM8 10a.905.905 0 1 0 0 1.81A.905.905 0 0 0 8 10zm-.5-3.5h1v2h-1v-2z"/>
+                                </svg>
+                                <span style="font-size: 0.9em; color: #ff2600;">Aviso: hay que realizar el pago trimestral de IVA</span>
+                            </div>
+
                         </div>
+                        
+                        <!-- NOMINAS -->
                         <div class="card-panel black-outline">
                             <h3 class="card-panel-title">Nominas</h3>
                             <p id="drivers-on-route-stat" class="card-panel-value">3</p>
+
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FFA500" viewBox="0 0 16 16" style="margin-right: 6px;">
+                                    <path d="M7.938 2.016a1 1 0 0 1 1.124 0l6.857 4.857A1 1 0 0 1 16 7.857v6.286A1 1 0 0 1 15 15H1a1 1 0 0 1-1-1V7.857a1 1 0 0 1 .081-.984l6.857-4.857zM8 4.236L2 8.857V14h12V8.857L8 4.236zM8 10a.905.905 0 1 0 0 1.81A.905.905 0 0 0 8 10zm-.5-3.5h1v2h-1v-2z"/>
+                                </svg>
+                                <span style="font-size: 0.9em; color: #ff2600;">Aviso: Quedan 7 dias para el pago de nominas.</span>
+                            </div>
+
                         </div>
+
+
                     </div>
                 </div>
 </section>
