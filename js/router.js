@@ -189,10 +189,10 @@ router.on({
     document.getElementById('app').innerHTML = html;
 
     const module2 = await import('/js/views/tpvGestor.js');
-    module.init();
+    module2.init();
 
     const html2 = await fetch('/views/tpvGestor.html').then(r => r.text());
-    document.getElementById('tpv-content-app').innerHTML = html;
+    document.getElementById('tpv-content-app').innerHTML = html2;
 
     // volver a escanear los <a data-navigo> que se inyectaron en la nueva vista
     router.updatePageLinks();
