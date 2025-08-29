@@ -24,10 +24,10 @@ body { font-family: 'Inter', sans-serif; }
 /***************************************************/
 /* Estilos para Titulos */
 /***************************************************/
-    .titulo-principal, h1 {
+   /* .titulo-principal, h1 {
         font-family: 'Segoe UI', Arial, sans-serif;
         font-size: 2.2rem;
-        line-height: 2.2rem;      /* ajusta la altura de línea */
+        line-height: 2.2rem;      
         color: #2c3e50;
         text-shadow: 1px 2px 8px #e0e0e0;
         margin-bottom: 1rem;      
@@ -40,7 +40,7 @@ body { font-family: 'Inter', sans-serif; }
     h2 {
         font-family: 'Segoe UI', Arial, sans-serif;
         font-size: 1.9rem;
-        line-height: 2.2rem;      /* ajusta la altura de línea */
+        line-height: 2.2rem;     
         color: #2980b9;
         margin-top: 2rem;
         margin-bottom: 1rem;
@@ -59,6 +59,28 @@ body { font-family: 'Inter', sans-serif; }
         border-left: 3px solid #85c1e9;
         padding-left: 0.5em;
         background: #fafdff;
+    }*/
+
+
+    /* Título principal */
+    h1 {
+    @apply font-sans text-4xl md:text-5xl font-extrabold text-gray-800
+            leading-tight tracking-wide mb-6
+            border-b-4 border-blue-500 inline-block pb-2;
+    }
+
+    /* Sección */
+    h2 {
+    @apply font-sans text-2xl md:text-3xl font-bold text-blue-700
+            leading-snug mt-10 mb-4
+            border-l-4 border-blue-500 pl-3 bg-blue-50;
+    }
+
+    /* Subsección */
+    h3 {
+    @apply font-sans text-lg md:text-xl font-medium text-gray-700
+            leading-snug mt-6 mb-2
+            border-l-2 border-blue-300 pl-2 bg-blue-50;
     }
 
 /***************************************************/
