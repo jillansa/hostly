@@ -2,59 +2,58 @@
 <!-- Contenido de Mapa -->
 <div id="map-content" class="admin-tab-content">
     <h2>Ubicación de Repartidores en Tiempo Real</h2>
-    <div id="map">
-
-    <style>
-        #map {
-            width: 100%;
-            height: 500px;
-        }
-    </style>
-    <script>
-        // Coordenadas fijas de ejemplo para repartidores
-        const repartidores = [
-            { id: 1, nombre: "Repartidor 1", lat: 40.4168, lng: -3.7038 },
-            { id: 2, nombre: "Repartidor 2", lat: 40.4188, lng: -3.7058 },
-            { id: 3, nombre: "Repartidor 3", lat: 40.4148, lng: -3.7018 }
-        ];
-
-        let map;
-        let markers = {};
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 40.4168, lng: -3.7038 },
-                zoom: 14,
-            });
-            actualizarRepartidores();
-        }
-
-        function actualizarRepartidores() {
-            // Simula refresco de posiciones (puedes reemplazar con fetch a tu backend)
-            repartidores.forEach(rep => {
-                // Si el marcador ya existe, actualiza su posición
-                if (markers[rep.id]) {
-                    markers[rep.id].setPosition({ lat: rep.lat, lng: rep.lng });
-                } else {
-                    // Si no existe, crea el marcador
-                    markers[rep.id] = new google.maps.Marker({
-                        position: { lat: rep.lat, lng: rep.lng },
-                        map,
-                        title: rep.nombre,
-                    });
-                }
-            });
-        }
-
-        // Refresca las posiciones cada 10 segundos
-        setInterval(() => {
-            // Aquí podrías actualizar las coordenadas de repartidores desde tu backend
-            actualizarRepartidores();
-        }, 10000);
-    </script>
-    <!-- Reemplaza TU_API_KEY con tu clave de Google Maps JavaScript API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf-DLvirgmdMgDIjRNyUobuoUFK83tT-0&callback=initMap"></script>
-
-    </div>
+    <!-- Contenedor del mapa (vacío, solo se dibuja el mapa dentro) -->
+    <div id="map"></div>
 </div>
+
+<style>
+    #map {
+        width: 100%;
+        height: 500px;
+    }
+</style>
+<script>
+    // Coordenadas fijas de ejemplo para repartidores
+    const repartidores = [
+        { id: 1, nombre: "Repartidor 1", lat: 40.4168, lng: -3.7038 },
+        { id: 2, nombre: "Repartidor 2", lat: 40.4188, lng: -3.7058 },
+        { id: 3, nombre: "Repartidor 3", lat: 40.4148, lng: -3.7018 }
+    ];
+
+    let map;
+    let markers = {};
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 40.4168, lng: -3.7038 },
+            zoom: 14,
+        });
+        actualizarRepartidores();
+    }
+
+    function actualizarRepartidores() {
+        // Simula refresco de posiciones (puedes reemplazar con fetch a tu backend)
+        repartidores.forEach(rep => {
+            // Si el marcador ya existe, actualiza su posición
+            if (markers[rep.id]) {
+                markers[rep.id].setPosition({ lat: rep.lat, lng: rep.lng });
+            } else {
+                // Si no existe, crea el marcador
+                markers[rep.id] = new google.maps.Marker({
+                    position: { lat: rep.lat, lng: rep.lng },
+                    map,
+                    title: rep.nombre,
+                });
+            }
+        });
+    }
+
+    // Refresca las posiciones cada 10 segundos
+    setInterval(() => {
+        // Aquí podrías actualizar las coordenadas de repartidores desde tu backend
+        actualizarRepartidores();
+    }, 10000);
+</script>
+<!-- Reemplaza TU_API_KEY con tu clave de Google Maps JavaScript API -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf-DLvirgmdMgDIjRNyUobuoUFK83tT-0&callback=initMap"></script>
 
